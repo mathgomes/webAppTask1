@@ -1,6 +1,7 @@
 # Web app task 1
 
-Small web applciation to answer a few requests
+Small web applciation to answer a few requests.
+Stack used: Nodejs, Express, mongoDB.
 
 ## Getting Started
 
@@ -10,7 +11,7 @@ git clone https://github.com/mathgomes/webAppTask1.git
 ```
 ### Prerequisites
 
-You need to have nodeJs installed
+You need to have nodeJs and npm installed
 
 ```
 https://nodejs.org/en/

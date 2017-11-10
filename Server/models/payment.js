@@ -1,6 +1,7 @@
 var mongoose  =  require("mongoose");
 
 /* The paiment model */
+// the _id is generated automatically by the database
 var paymentSchema = mongoose.Schema({
     payment_date: {
         type: Date,
@@ -8,7 +9,8 @@ var paymentSchema = mongoose.Schema({
     },
     payment_type: {
         type: String,
-        required: true
+        required: true,
+        match: /^(cartao|cartão|boleto|cheque|dinheiro)$/i  
     },
     product: {
         type: mongoose.Schema.Types.ObjectId,
