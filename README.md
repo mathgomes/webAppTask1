@@ -36,6 +36,22 @@ npm start
 
 Once the server is initialized, open postman and test away!
 
+A *POST* request to:
+```
+http://localhost:3000/payment
+```
+Adds a new payment to the database and returns the created payment
+
+A *GET* request to: 
+```
+http://localhost:3000/plans
+```
+Returns a list of the plans stored in the database.
+
+If you have mongo installed, you can connect to the database issuing the following command on the terminal:
+```
+mongo ds251845.mlab.com:51845/db_products -u math -p math
+```
 
 ## Author
 

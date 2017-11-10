@@ -16,7 +16,7 @@ mongoose.connect(dburl, {useMongoClient: true}, function(error) {
 
 
 router.get("/", function(req, res) {
-    res.send("Welcome to the home pageaaaaaaa");
+    res.send("Welcome to the home page");
 });
 
 module.exports = router;
