@@ -44,6 +44,7 @@ function _populateDB() {
 }
 
 function seedDB() {
+    // Erase database, then populate it
     _eraseDB(_populateDB);  
 }
 

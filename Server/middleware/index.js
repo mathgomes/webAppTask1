@@ -8,19 +8,27 @@ function _checkDiscout(discount) {
         return discount; 
     }
 }
+function _checkPrice(prod_price) {
+    if(prod_price) {
+        prod_price = prod_price.replace(",",".");
+        // matches any decimal digit
+        prod_price = prod_price.match(/\d+(.\d+)?/)[0];
+        prod_price = Number(prod_price);
+        return prod_price;
+    }
+}
 
 module.exports = {
     /* Check for all the constraints related */
     checkConstraints: function(req, res, next) {
-        // Turns price into a Number so operations can be made on it
-        req.body.product_price = req.body.product_price.replace(",",".");
-        req.body.product_price = Number(req.body.product_price);
-
+        // Validate price
+        req.body.product_price = _checkPrice(req.body.product_price);
+        // Validate date (format: MM/DD/YYYY)
         req.body.payment_date = new Date(req.body.payment_date);
-        // Check discount constraint
+        // Validate discount
         req.body.discount = _checkDiscout(req.body.discount);
         req.body.price = req.body.product_price * (1 - req.body.discount);
-        
+
         //Discount error
         if(req.body.discount > 0.5) {
             return res.status(400).json({message: "Discount cant be bigger than 50%"});

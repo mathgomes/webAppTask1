@@ -10,7 +10,7 @@ var paymentSchema = mongoose.Schema({
     payment_type: {
         type: String,
         required: true,
-        match: /^(cartao|cartão|boleto|cheque|dinheiro)$/i  
+        match: /^(cart(a|ã)o|boleto|cheque|dinheiro)$/i  
     },
     product: {
         type: mongoose.Schema.Types.ObjectId,
