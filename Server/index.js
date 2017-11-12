@@ -2,7 +2,8 @@ var express     =   require("express"),
     bodyParser  =   require("body-parser"),
     app         =   express();
 
-/** REQUIRING ROUTES **/
+
+/** REQUIRING ROUTERS **/
 var indexRouter       =   require("./routes"),
     paymentsRouter    =   require("./routes/payments"),
     plansRouter       =   require("./routes/plans");
@@ -14,7 +15,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use("/", indexRouter);
 app.use("/plans", plansRouter);
 app.use("/payment", paymentsRouter);
-
 
 
 /** SERVER CONNECTION **/

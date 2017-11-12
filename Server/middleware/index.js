@@ -18,6 +18,7 @@ function _checkPrice(prod_price) {
     }
 }
 
+
 module.exports = {
     /* Check for all the constraints related */
     checkConstraints: function(req, res, next) {

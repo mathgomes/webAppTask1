@@ -10,7 +10,18 @@ router.post("/", middleware.checkConstraints, function(req, res) {
             "Please, insert all the fields correctly. (" + err.message + ")";
             return res.status(400).json({message: message});
         }
-        else res.status(200).json(createdPayment);
+        else  {
+            // For display purposes
+            var sentPayment = {};
+            sentPayment.transaction_id = createdPayment.transaction_id;
+            sentPayment.payment_date = createdPayment.payment_date;
+            sentPayment.payment_type = createdPayment.payment_type;
+            sentPayment.product = createdPayment.product;
+            sentPayment.product_price = createdPayment.product_price;
+            sentPayment.discount = createdPayment.discount;
+            sentPayment.price = createdPayment.price;
+            res.status(200).json(sentPayment);
+        }
     });
 });
 
