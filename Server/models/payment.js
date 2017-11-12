@@ -1,10 +1,15 @@
 var mongoose  =  require("mongoose");
 
 /* The paiment model */
-// the _id is generated automatically by the database
+// Remember to always type in an unique transaction_id
 var paymentSchema = mongoose.Schema({
+    transaction_id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     payment_date: {
-        type: Date,
+        type: String,
         required: true
     },
     payment_type: {

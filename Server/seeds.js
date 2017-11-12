@@ -32,7 +32,7 @@ function _populateDB() {
             price: 129.90,
             description: "o melhor plano de todos"
         },
-    ]
+    ];
     plans.forEach(function(plan) {
         planModel.create(plan, function(err, createdPlan) {
             if(err) console.log(err);

@@ -21,5 +21,5 @@ module.exports.findByName = function(name, cb) {
     planModel.findOne({product: name}, function(err, foundPlan) {
         cb(err, foundPlan);
     });
-}
+};
 

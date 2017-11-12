@@ -1,7 +1,7 @@
 # Web app task 1
 
 Small web applciation to answer a few requests.
-Stack used: Nodejs, Express, mongoDB.
+Stack used: Nodejs, Express, mongoDB, mongoose.
 
 ## Getting Started
 
@@ -49,6 +49,7 @@ http://localhost:3000/plans
 ```
 Returns a list of the plans stored in the database.
 
+The app uses a "database as a service" provided by MLab https://mlab.com/.
 If you have mongo installed, you can connect to the database issuing the following command on the terminal:
 ```
 mongo ds251845.mlab.com:51845/db_products -u math -p math
