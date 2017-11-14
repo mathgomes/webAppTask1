@@ -27,7 +27,7 @@ module.exports = {
             if(err) return res.status(500).json({message: "Internal server error"});
             else if(!foundPlan) return res.status(400).json({message: "Product not found"});
             else  {
-                // Validate price
+                // Validate product_price
                 req.body.product_price = _checkPrice(req.body.product_price);
                 if(foundPlan.price != req.body.product_price) {
                     var message = "Informed price does not match product's R$ " + foundPlan.price + " price";
@@ -38,12 +38,14 @@ module.exports = {
                     req.body.transaction_id = Number(req.body.transaction_id);
                     // Validate discount
                     req.body.discount = _checkDiscout(req.body.discount);
-                    req.body.price = req.body.product_price * (1 - req.body.discount);
                     if(req.body.discount > 0.5) {
                         return res.status(400).json({message: "Discount cant be bigger than 50%." +
                             " Currently, it is " + req.body.discount*100 + " %."});
                     }
-                    next();
+                    if(req.body.discount) {
+                        req.body.price = req.body.product_price * (1 - req.body.discount);
+                    }
+                    return next();
                 }
             }
         });
