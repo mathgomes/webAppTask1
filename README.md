@@ -12,7 +12,7 @@ git clone https://github.com/mathgomes/webAppTask1.git
 ```
 ### Prerequisites
 
-You need to have *nodeJs* and *npm* installed
+You need to have _*nodeJs*_ and _*npm*_ installed
 
 ```
 https://nodejs.org/en/
@@ -45,7 +45,7 @@ http://localhost:3000/payment
 Adds a new payment to the database and returns the created payment
 
 
-####*NOTE* The **price** field is derived in the backend. Please, provide the following fields when making a request:
+#### *NOTE* The **price** field is derived in the backend. Please, provide the following fields when making a request:
 - transaction_id : _An **unique** id for the transaction_
 - payment_date : The date of the trasanction
 - payment_type : (cartao | boleto | cheque | dinheiro) are accepted
