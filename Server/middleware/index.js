@@ -1,5 +1,5 @@
 var planModel =   require("../models/plan"),
-    productModel = require("../models/plan");
+    paymentModel = require("../models/payment");
 
 function _checkDiscout(discount) {
     if(discount) {
@@ -38,13 +38,13 @@ module.exports = {
                     req.body.transaction_id = Number(req.body.transaction_id);
                     // Validate discount
                     req.body.discount = _checkDiscout(req.body.discount);
-                    if(req.body.discount > 0.5) {
+                    if(req.body.discount > paymentModel.DISCOUNT_LIMIT) {
                         return res.status(400).json({message: "Discount cant be bigger than 50%." +
-                            " Currently, it is " + req.body.discount*100 + " %."});
+                            " Currently, it is " + req.body.discount*100 + "%."});
                     }
-                    if(req.body.discount) {
-                        req.body.price = req.body.product_price * (1 - req.body.discount);
-                    }
+                    // Set price to 0 if discount is not set
+                    if(req.body.discount) req.body.price = (req.body.product_price * (1 - req.body.discount)).toFixed(2);
+                    else req.body.price = paymentModel.NO_PRICE;
                     return next();
                 }
             }

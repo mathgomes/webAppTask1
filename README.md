@@ -44,8 +44,9 @@ http://localhost:3000/payment
 ```
 Adds a new payment to the database and returns the created payment
 
-*NOTE* The **price** field is derived in the backend. Please, provide the following fields when making a request:
-- transaction_id : An **unique** id for the transaction
+
+####*NOTE* The **price** field is derived in the backend. Please, provide the following fields when making a request:
+- transaction_id : _An **unique** id for the transaction_
 - payment_date : The date of the trasanction
 - payment_type : (cartao | boleto | cheque | dinheiro) are accepted
 - product : The name of the product being purchased

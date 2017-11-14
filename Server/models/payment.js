@@ -37,3 +37,5 @@ var paymentSchema = mongoose.Schema({
 
 
 module.exports = mongoose.model("payments", paymentSchema);
+module.exports.DISCOUNT_LIMIT = 0.5;
+module.exports.NO_PRICE = 0;
