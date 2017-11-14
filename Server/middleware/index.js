@@ -27,21 +27,21 @@ module.exports = {
             if(err) return res.status(500).json({message: "Internal server error"});
             else if(!foundPlan) return res.status(400).json({message: "Product not found"});
             else  {
+                // Validate price
+                req.body.product_price = _checkPrice(req.body.product_price);
                 if(foundPlan.price != req.body.product_price) {
-                    var message = "Informed price does not match products R$ " + foundPlan.price + " price";
+                    var message = "Informed price does not match product's R$ " + foundPlan.price + " price";
                     return res.status(400).json({message: message});
                 }
                 else  {
                 // If no errors occured until now, validate the other attributes
                     req.body.transaction_id = Number(req.body.transaction_id);
-                    // Validate price
-                    req.body.product_price = _checkPrice(req.body.product_price);
                     // Validate discount
                     req.body.discount = _checkDiscout(req.body.discount);
-                    req.body.product = foundPlan._id;
                     req.body.price = req.body.product_price * (1 - req.body.discount);
                     if(req.body.discount > 0.5) {
-                        return res.status(400).json({message: "Discount cant be bigger than 50%"});
+                        return res.status(400).json({message: "Discount cant be bigger than 50%." +
+                            " Currently, it is " + req.body.discount*100 + " %."});
                     }
                     next();
                 }

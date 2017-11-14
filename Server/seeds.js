@@ -37,7 +37,7 @@ function _populateDB() {
         planModel.create(plan, function(err, createdPlan) {
             if(err) console.log(err);
             else {
-                console.log("inserted plan");
+                console.log("inserted " + createdPlan.product); 
             }
         });
     });
@@ -45,7 +45,7 @@ function _populateDB() {
 
 function seedDB() {
     // Erase database, then populate it
-    _eraseDB(_populateDB);  
+    _eraseDB(_populateDB);
 }
 
 module.exports = seedDB;
