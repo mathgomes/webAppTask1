@@ -35,7 +35,7 @@ module.exports = {
                 }
                 else  {
                 // If no errors occured until now, validate the other attributes
-                    req.body.transaction_id = Number(req.body.transaction_id);
+                    if(req.body.transaction_id) req.body.transaction_id = Number(req.body.transaction_id);
                     // Validate discount
                     req.body.discount = _checkDiscout(req.body.discount);
                     if(req.body.discount > paymentModel.DISCOUNT_LIMIT) {
