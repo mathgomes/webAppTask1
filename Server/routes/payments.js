@@ -7,8 +7,16 @@ router.post("/", middleware.checkConstraints, function(req, res) {
     paymentModel.create(req.body, function(err, createdPayment) {
         if(err || !createdPayment) {
             var message = "One or more fields are not defined or incorrect. " +
-            "Please, insert all the fields correctly. (" + err.message + ")";
-            return res.status(400).json({message: message});
+            "Please, insert all the fields correctly.\nErrors are: ";
+
+            if(err.name == "MongoError") {
+                message += "\n\t You inserted a transaction_id that already exists";
+                res.status(400).send(message);
+            }
+            for (var attr in err.errors) {
+                message += "\n\t" + err.errors[attr].message;
+            }
+            return res.status(400).send(message);
         }
         else  {
             // For display purposes
