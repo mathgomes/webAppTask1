@@ -11,7 +11,7 @@ router.post("/", middleware.checkConstraints, function(req, res) {
 
             if(err.name == "MongoError") {
                 message += "\n\t You inserted a transaction_id that already exists";
-                res.status(400).send(message);
+                return res.status(400).send(message);
             }
             for (var attr in err.errors) {
                 message += "\n\t" + err.errors[attr].message;
