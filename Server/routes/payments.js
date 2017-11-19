@@ -11,7 +11,7 @@ router.post("/", middleware.checkConstraints, function(req, res) {
 
             if(err.name == "MongoError") {
                 message += "\n\t You inserted a transaction_id that already exists";
-                res.status(400).send(message);
+                return res.status(400).send(message);
             }
             for (var attr in err.errors) {
                 message += "\n\t" + err.errors[attr].message;
@@ -28,9 +28,15 @@ router.post("/", middleware.checkConstraints, function(req, res) {
             sentPayment.product_price = createdPayment.product_price;
             sentPayment.discount = createdPayment.discount;
             sentPayment.price = createdPayment.price;
-            res.status(200).json(sentPayment);
+            return res.status(200).json(sentPayment);
         }
     });
 });
+
+// /payment/new
+router.get("/new", function(req, res) {
+    res.render("new");
+});
+
 
 module.exports = router;

@@ -66,6 +66,20 @@ If you have mongo installed, you can connect to the database issuing the followi
 ```
 mongo ds251845.mlab.com:51845/db_products -u math -p math
 ```
+___
+
+# Web app task 2
+
+The frontend of this web app, to consume the API implemented on part 1
+Stack used: [Bulma](https://bulma.io/), [Jquery](https://jquery.com/), [Font-awesome](http://fontawesome.io/)
+
+## Getting Started
+
+All the dependecies have its CDN linked so, you're good to go.
+Google Chrome is recommended.
+
+## Running the tests
+
 
 ## Author
 

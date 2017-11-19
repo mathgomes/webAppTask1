@@ -1,5 +1,6 @@
 var express     =   require("express"),
     bodyParser  =   require("body-parser"),
+    path        =   require("path"),
     app         =   express();
 
 
@@ -8,7 +9,10 @@ var indexRouter       =   require("./routes"),
     paymentsRouter    =   require("./routes/payments"),
     plansRouter       =   require("./routes/plans");
 
+/** MIDDLEWARE **/
 app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, '../Client/public')));
 
 
 /** ROUTES **/

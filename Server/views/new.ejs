@@ -1,0 +1,115 @@
+<% include ./partials/header %>
+    <section class="hero is-fullheight is-bold">
+        <header class="hero-head">
+            <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="icon is-large" href="/">
+                            <i class="fa fa-coffee fa-3x" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-menu">
+                        <!-- navbar start, navbar end -->
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="hero-body columns is-centered">
+            <!-- <section class="columns is-centered"> -->
+            <div class="column is-6">
+                <div class="box">
+                    <h1 class="formTitle title has-text-centered is-2">
+                        Purchase a new plan
+                    </h1>
+                    <form id="paymentForm" class="field is-grouped-centered" action="/payment" method="POST">
+
+                        <label class="label">Transaction ID</label>
+                        <div class="control field has-icons-left">
+                            <input class="input" type="Number" placeholder="UNIQUE id of the transaction" name="transaction_id" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-id-badge"></i>
+                            </span>
+                        </div>
+
+                        <label class="label">Payment Date</label>
+                        <div class="control field has-icons-left">
+                            <input class="input" type="date" placeholder="DD/MM/YYYY" name="payment_date" pattern="\d{2}\d{2}\d{4}" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+
+                        <label class="label">Payment Type</label>
+                        <div class="control field">
+                            <label class="radio">Cartão
+                                <input type="radio" name="payment_type" value="cartão" required>
+                            </label>
+                            <label class="radio">Boleto
+                                <input type="radio" name="payment_type" value="boleto">
+                            </label>
+                            <label class="radio">Cheque
+                                <input type="radio" name="payment_type" value="cheque">
+                            </label>
+                            <label class="radio">Dinheiro
+                                <input type="radio" name="payment_type" value="dinheiro">
+                            </label>
+                        </div>
+
+                        <label class="label">Product Name</label>
+                        <div class="control field has-icons-left">
+                            <div class="select">
+                                <select name="product" required>
+                                    <option disabled selected value>Select a product</option>
+                                    <option value="gold_plan">Gold Plan</option>
+                                    <option value="platinum_plan">Platinum Plan</option>
+                                    <option value="super_premium_plan">Super Premium Plan</option>
+                                </select>
+                            </div>
+                            <div class="icon is-small is-left">
+                                <i class="fa fa-product-hunt"></i>
+                            </div>
+                        </div>
+
+                        <label class="label">Price</label>
+                        <div class="control field has-icons-left">
+                            <input class="input" type="Number" placeholder="Must be the same as selected product's price" name="product_price" step="0.01"
+                                min="0" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-money"></i>
+                            </span>
+                        </div>
+
+                        <label class="label">Discount</label>
+                        <div class="control field has-icons-left">
+                            <input class="input" type="Number" placeholder="Between 0 and 50%" max="50" name="discount" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-percent"></i>
+                            </span>
+                        </div>
+                        <hr>
+
+                        <div class="level">
+                            <div class="level-item">
+                                <button id="formSubmit" class="button is-large" type="submit">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span>
+                                        Buy plan
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="container is-fluid">
+                                <div id="paymentResult" class="notification">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- </section> -->
+        </div>
+    </section>
+
+    <% include ./partials/footer %>

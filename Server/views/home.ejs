@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+<section class="hero is-fullheight has-bg-img">
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="slogan">
+                <h1 class="title is-1">
+                    <i class="fa fa-coffee" aria-hidden="true"></i>
+                    Casa e Café Web App
+                </h1>
+                <h2 class="subtitle is-3">
+                    Views plans. Buy products. Repeat.
+                </h2>
+            </div>
+            <div class="buttons is-centered">
+                    <a id="btnList" class="button is-warning is-large is-outlined" >
+                        <span>
+                            <i class="fa fa-list" aria-hidden="true"></i> List plans
+                        </span>
+                    </a>
+                    <a id="btnPurchase" class="button is-warning is-large is-outlined" href="/payment/new">                        
+                        <span>
+                            <i class="fa fa-money" aria-hidden="true"></i> Buy a plan
+                        </span>
+                    </a>
+            </div>
+            <div id="productDisplay"></div>
+        </div>
+    </div>
+</section>
+<% include ./partials/footer %>
