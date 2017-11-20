@@ -1,13 +1,16 @@
 .title, .subtitle {
     color: rgb(233, 215, 165);
 }
+.button {
+    transition: all 0.3s;
+}
 
 /* Home page */
 #productDisplay {
     display: none;
 }
 .has-bg-img {
-    background: url('https://www.comunicaffe.com/wp-content/uploads/2016/07/hot-coffee.jpg')center center; background-size:cover; 
+    background: url('../img/bg.jpg')center center; background-size:cover; 
 }
 .slogan {
     text-shadow: 
@@ -20,7 +23,11 @@
 .box.plan {
     background-color: #040105c9;
 }
-
+hr.separator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgb(252, 253, 239), rgb(255, 221, 87), rgb(251, 253, 235));
+}
 .level-item .subtitle:not(:last-child), .level-item .title:not(:last-child) {
     margin-bottom: 1.5rem;
 }
@@ -28,6 +35,9 @@
 /* Form page */
 #formSubmit {
     background-color: rgb(253, 246, 222);
+}
+#formSubmit:hover {
+    background-color: rgb(255, 238, 175);
 }
 #paymentResult {
     display: none;

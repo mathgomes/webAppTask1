@@ -6,16 +6,14 @@
                     <div class="navbar-brand">
                         <a class="icon is-large" href="/">
                             <i class="fa fa-coffee fa-3x" aria-hidden="true"></i>
+                            Home
                         </a>
                     </div>
-                    <div class="navbar-menu">
-                        <!-- navbar start, navbar end -->
-                    </div>
+                    <div class="navbar-menu"></div>
                 </div>
             </nav>
         </header>
         <div class="hero-body columns is-centered">
-            <!-- <section class="columns is-centered"> -->
             <div class="column is-6">
                 <div class="box">
                     <h1 class="formTitle title has-text-centered is-2">
@@ -33,7 +31,7 @@
 
                         <label class="label">Payment Date</label>
                         <div class="control field has-icons-left">
-                            <input class="input" type="date" placeholder="DD/MM/YYYY" name="payment_date" pattern="\d{2}\d{2}\d{4}" required>
+                            <input class="input" type="date" placeholder="DD/MM/YYYY" name="payment_date" pattern="^\d{2}\-\d{2}\-\d{4}$" required>
                             <span class="icon is-small is-left">
                                 <i class="fa fa-calendar"></i>
                             </span>
@@ -59,10 +57,14 @@
                         <div class="control field has-icons-left">
                             <div class="select">
                                 <select name="product" required>
-                                    <option disabled selected value>Select a product</option>
-                                    <option value="gold_plan">Gold Plan</option>
-                                    <option value="platinum_plan">Platinum Plan</option>
-                                    <option value="super_premium_plan">Super Premium Plan</option>
+                                    <% if(product) { %>
+                                        <option selected readonly value="<%= product %>"><%= name %></option>
+                                    <% } else { %>
+                                        <option disabled selected value>Select a product</option>
+                                        <option value="gold_plan">Gold Plan</option>
+                                        <option value="platinum_plan">Platinum Plan</option>
+                                        <option value="super_premium_plan">Super Premium Plan</option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="icon is-small is-left">
@@ -72,8 +74,12 @@
 
                         <label class="label">Price</label>
                         <div class="control field has-icons-left">
-                            <input class="input" type="Number" placeholder="Must be the same as selected product's price" name="product_price" step="0.01"
-                                min="0" required>
+                            <% if(product) { %>
+                                <input class="input" type="Number" name="product_price" value="<%= product_price %>" required readonly>
+                            <% } else { %>
+                                <input class="input" type="Number" placeholder="Must be the same as selected product's price" name="product_price" step="0.01"
+                                    min="0" required>
+                            <% } %>
                             <span class="icon is-small is-left">
                                 <i class="fa fa-money"></i>
                             </span>
@@ -94,22 +100,17 @@
                                     <span class="icon is-small">
                                         <i class="fa fa-check" aria-hidden="true"></i>
                                     </span>
-                                    <span>
-                                        Buy plan
-                                    </span>
+                                    <span>Buy plan</span>
                                 </button>
                             </div>
                             <div class="container is-fluid">
-                                <div id="paymentResult" class="notification">
-                                    
-                                </div>
+                                <div id="paymentResult" class="notification"></div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <!-- </section> -->
         </div>
     </section>
 
-    <% include ./partials/footer %>
+<% include ./partials/footer %>

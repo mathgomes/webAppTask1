@@ -71,15 +71,33 @@ ___
 # Web app task 2
 
 The frontend of this web app, to consume the API implemented on part 1
-Stack used: [Bulma](https://bulma.io/), [Jquery](https://jquery.com/), [Font-awesome](http://fontawesome.io/)
+Stack used: 
+
+[Bulma](https://bulma.io/), [Jquery](https://jquery.com/), [Font-awesome](http://fontawesome.io/)
 
 ## Getting Started
 
-All the dependecies have its CDN linked so, you're good to go.
+All the dependecies have its CDN linked so you're good to go.
+
 Google Chrome is recommended.
 
 ## Running the tests
 
+Entering
+```
+http://localhost:3000/
+```
+the user will be presented with the landing page, where it can click the button "List plans", to list
+all the available plans.
+
+When plans are listed, each one will have a button "Get this one! ". When this button is clicked, the user
+will be redirected to
+```
+http://localhost:3000/payment/new
+```
+in which there will be a form to fill the fields and perform a payment.
+
+A message will be displayed at the botttom of the form with an error or successful operation.
 
 ## Author
 
