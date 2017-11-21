@@ -21,77 +21,105 @@
                     </h1>
                     <form id="paymentForm" class="field is-grouped-centered" action="/payment" method="POST">
 
-                        <label class="label">Transaction ID</label>
-                        <div class="control field has-icons-left">
-                            <input class="input" type="Number" placeholder="UNIQUE id of the transaction" name="transaction_id" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-id-badge"></i>
-                            </span>
-                        </div>
-
-                        <label class="label">Payment Date</label>
-                        <div class="control field has-icons-left">
-                            <input class="input" type="date" placeholder="DD/MM/YYYY" name="payment_date" pattern="^\d{2}\-\d{2}\-\d{4}$" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                        </div>
-
-                        <label class="label">Payment Type</label>
-                        <div class="control field">
-                            <label class="radio">Cartão
-                                <input type="radio" name="payment_type" value="cartão" required>
-                            </label>
-                            <label class="radio">Boleto
-                                <input type="radio" name="payment_type" value="boleto">
-                            </label>
-                            <label class="radio">Cheque
-                                <input type="radio" name="payment_type" value="cheque">
-                            </label>
-                            <label class="radio">Dinheiro
-                                <input type="radio" name="payment_type" value="dinheiro">
-                            </label>
-                        </div>
-
-                        <label class="label">Product Name</label>
-                        <div class="control field has-icons-left">
-                            <div class="select">
-                                <select name="product" required>
-                                    <% if(product) { %>
-                                        <option selected readonly value="<%= product %>"><%= name %></option>
-                                    <% } else { %>
-                                        <option disabled selected value>Select a product</option>
-                                        <option value="gold_plan">Gold Plan</option>
-                                        <option value="platinum_plan">Platinum Plan</option>
-                                        <option value="super_premium_plan">Super Premium Plan</option>
-                                    <% } %>
-                                </select>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-small">
+                                <label class="label">Transaction ID</label>
                             </div>
-                            <div class="icon is-small is-left">
-                                <i class="fa fa-product-hunt"></i>
+                            <div class="field-body control has-icons-left">
+                                <input class="input" type="Number" placeholder="UNIQUE id of the transaction" name="transaction_id" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-id-badge"></i>
+                                </span>
                             </div>
                         </div>
 
-                        <label class="label">Price</label>
-                        <div class="control field has-icons-left">
-                            <% if(product) { %>
-                                <input class="input" type="Number" name="product_price" value="<%= product_price %>" required readonly>
-                            <% } else { %>
-                                <input class="input" type="Number" placeholder="Must be the same as selected product's price" name="product_price" step="0.01"
-                                    min="0" required>
-                            <% } %>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-money"></i>
-                            </span>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-small">
+                                <label class="label">Payment Date</label>
+                            </div>
+                            <div class="field-body control has-icons-left">
+                                <input class="input" type="date" placeholder="DD/MM/YYYY" name="payment_date" pattern="^\d{2}\-\d{2}\-\d{4}$" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
                         </div>
 
-                        <label class="label">Discount</label>
-                        <div class="control field has-icons-left">
-                            <input class="input" type="Number" placeholder="Between 0 and 50%" max="50" name="discount" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-percent"></i>
-                            </span>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-small">
+                                <label class="label">Payment Type</label>
+                            </div>
+                            <div class="field-body control">
+                                <label class="radio">
+                                    <span>Cartão</span>
+                                    <input class="radio"type="radio" name="payment_type" value="cartão" required>
+                                </label>
+                                <label class="radio">Boleto
+                                    <input type="radio" name="payment_type" value="boleto">
+                                </label>
+                                <label class="radio">Cheque
+                                    <input type="radio" name="payment_type" value="cheque">
+                                </label>
+                                <label class="radio">Dinheiro
+                                    <input type="radio" name="payment_type" value="dinheiro">
+                                </label>
+                            </div>
                         </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label is-small">
+                                <label class="label">Product Name</label>
+                            </div>
+                            <div class="field-body control has-icons-left">
+                                <div class="select">
+                                    <select name="product" required>
+                                        <% if(product) { %>
+                                            <option selected readonly value="<%= product %>">
+                                                <%= name %>
+                                            </option>
+                                        <% } else { %>
+                                            <option disabled selected value>Select a product</option>
+                                            <option value="gold_plan">Gold Plan</option>
+                                            <option value="platinum_plan">Platinum Plan</option>
+                                            <option value="super_premium_plan">Super Premium Plan</option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="icon is-small is-left">
+                                    <i class="fa fa-product-hunt"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label is-small">
+                                <label class="label">Price</label>
+                            </div>
+                            <div class="field-body control has-icons-left">
+                                <% if(product) { %>
+                                    <input class="input" type="Number" name="product_price" value="<%= product_price %>" required readonly>
+                                <% } else { %>
+                                    <input class="input" type="Number" placeholder="Must be the same as selected product's price" name="product_price" step="0.01"
+                                        min="0" required>
+                                <% } %>
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-money"></i>
+                                    </span>
+                            </div>
+                        </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label is-small">
+                                <label class="label">Discount</label>
+                            </div>
+                            <div class="field-body control has-icons-left">
+                                <input class="input" type="Number" placeholder="Between 0 and 50%" max="50" name="discount" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-percent"></i>
+                                </span>
+                            </div>
+                        </div>
+
                         <hr>
 
                         <div class="level">
@@ -113,4 +141,4 @@
         </div>
     </section>
 
-<% include ./partials/footer %>
+    <% include ./partials/footer %>
