@@ -83,11 +83,12 @@ Google Chrome is recommended.
 
 ## Running the tests
 
-Entering
+With the server running, enter on your browser:
+
 ```
 http://localhost:3000/
 ```
-the user will be presented with the landing page, where it can click the button "List plans", to list
+The user will be presented with the landing page, where it can click the button "List plans", to list
 all the available plans.
 
 When plans are listed, each one will have a button "Get this one! ". When this button is clicked, the user

@@ -27,7 +27,7 @@ function _checkPrice(prod_price) {
 
 module.exports = {
     /* Checks for all the constraints related (order is:
-        No product -> Price not match -> Discount too big -> Date incorrect -> Any other attribute missing
+        No product -> Price doesnt match -> Discount too big -> Incorrect date -> Any other attribute missing
     */
     checkConstraints: function(req, res, next) {
         // Atempts to find the product in the database

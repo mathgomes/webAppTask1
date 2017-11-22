@@ -23,7 +23,11 @@
 }
 .box.plan {
     background-color: #040105c9;
-    box-shadow: 3px -3px 6px 0px #0f0101
+    box-shadow: 3px -3px 6px 0px #0f0101;
+    transition: all .2s ease-in-out;
+}
+.box.plan:hover {
+    transform: scale(1.05);
 }
 hr.separator {
     border: 0;

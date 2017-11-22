@@ -12,9 +12,9 @@ function addEvents() {
         let url = "http://localhost:3000/plans";
         makeAjaxCall(url, "GET", null, null, function(data, textStatus) {
             // Clears previous display
-            if($("#productDisplay").html != "") {
+            if($("#productDisplay").html != "")
                 $('#productDisplay').empty();
-            }
+
             // Deletes unecessary attrbiutes
             delete data[0]._id;
             delete data[0].__v;
@@ -36,7 +36,7 @@ function addEvents() {
             data.forEach(function(plan) {
                 display += "<div class='column is-4'><div class='plan box'>";
                 props.forEach(function(attr) {
-                    switch(attr){
+                    switch(attr) {
                         case "name":
                             display += "<h2 class='title is-capitalized'>" + plan[attr] + "</h2>";
                             break;
@@ -59,8 +59,8 @@ function addEvents() {
             });
             display += "</div>";
 
-            $("#productDisplay").append(display);
-            $("#productDisplay").slideDown( "slow");
+            $("#productDisplay").append(display)
+                                .slideDown("slow");
 
         }, function(textStatus, errorThrown) {
             // Error, there will never be one here
@@ -92,13 +92,12 @@ function addEvents() {
 /* Removes and adds classes to make display message correct according to result of ajax call */
 function displayResultMessage(toRemove, toAdd, toDisplay) {
     if($("#paymentResult").html != "") {
-        $('#paymentResult').empty();
-        $("#paymentResult").hide();
+        $('#paymentResult').empty().hide();
     }
-    $("#paymentResult").append(toDisplay);
-    $("#paymentResult").removeClass(toRemove);
-    $("#paymentResult").addClass(toAdd);
-    $("#paymentResult").fadeIn("slow"); 
+    $("#paymentResult").append(toDisplay)   
+                        .removeClass(toRemove)
+                        .addClass(toAdd)
+                        .fadeIn("slow"); 
 }
 
 /* Perfoms a generic jquery ajax call */
